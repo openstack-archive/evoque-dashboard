@@ -1,4 +1,4 @@
-from evoquedashboard import exceptions
+from evoque_dashboard import exceptions
 
 DASHBOARD = 'ticket'
 ADD_INSTALLED_APPS = [

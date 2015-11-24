@@ -5,6 +5,7 @@
 hacking<0.11,>=0.10.0
 # Testing Requirements
 http://tarballs.openstack.org/horizon/horizon-master.tar.gz#egg=horizon
+http://tarballs.openstack.org/python-evoqueclient/python-evoqueclient-master.tar.gz#egg=python-evoqueclient
 
 coverage>=3.6
 django-nose>=1.2
