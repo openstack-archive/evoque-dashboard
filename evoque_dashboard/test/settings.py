@@ -13,3 +13,6 @@
 #    under the License.
 
 from openstack_dashboard.test.settings import *  # noqa
+
+
+DEBUG = True
