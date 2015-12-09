@@ -18,7 +18,7 @@ from openstack_dashboard.api import base
 
 from evoqueclient import client as evoque_client
 
-USER_AGENT = 'python-senlinclient'
+USER_AGENT = 'python-evoqueclient'
 
 
 class Workflow(base.APIResourceWrapper):
