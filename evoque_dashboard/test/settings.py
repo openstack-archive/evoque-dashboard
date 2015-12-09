@@ -12,4 +12,11 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from horizon.utils import secret_key
+
 from openstack_dashboard.test.settings import *  # noqa
+
+
+TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+SECRET_KEY = secret_key.generate_or_read_from_file(
+    os.path.join(TEST_DIR, '.secret_key_store'))
