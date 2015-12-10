@@ -10,16 +10,18 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import mock
+# import mock
+
+from evoqueclient.v1 import workflows
 
 from openstack_dashboard.test.test_data import utils as test_data_utils
 
 
 def data(TEST):
-
     # Workflows
-    TEST.workflows = test_data_utils.TestDataContainer()
-    workflow_1 = mock.Mock()
-    workflow_1.name = "test-workflow"
+    TEST.evoqueclient_workflows = test_data_utils.TestDataContainer()
+    workflow_1 = workflows.Workflow(
+        workflows.WorkflowManager(None),
+        {'name': 'test-workflow'})
 
-    TEST.workflows.add(workflow_1)
+    TEST.evoqueclient_workflows.add(workflow_1)

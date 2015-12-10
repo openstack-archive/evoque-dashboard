@@ -12,26 +12,24 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import contextlib
+
 from django.core.urlresolvers import reverse
-from django import http
+import mock
 
 from mox3.mox import IsA  # noqa
 
-from evoque_dashboard import api
 from evoque_dashboard.test import helpers as test
 
 INDEX_URL = reverse('horizon:ticket:workflows:index')
 
 
-class PoliciesTest(test.TestCase):
+class WorkflowsTest(test.TestCase):
 
-    @test.create_stubs({api.evoque: ('workflow_list',)})
     def test_index(self):
-        workflows = self.workflows.list()
-        api.evoque.workflow_list(
-            IsA(http.HttpRequest)).AndReturn(workflows)
-        self.mox.ReplayAll()
+        with contextlib.nested(
+            mock.patch('evoque_dashboard.api.evoque.workflow_list',
+                       return_value=self.evoqueclient_workflows.list()),):
+            res = self.client.get(INDEX_URL)
 
-        res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'ticket/workflows/index.html')
-        self.assertEqual(len(workflows), 1)
