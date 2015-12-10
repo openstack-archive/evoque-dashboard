@@ -28,6 +28,7 @@ class PoliciesTest(test.TestCase):
     @test.create_stubs({api.evoque: ('workflow_list',)})
     def test_index(self):
         workflows = self.workflows.list()
+        print(workflows)
         api.evoque.workflow_list(
             IsA(http.HttpRequest)).AndReturn(workflows)
         self.mox.ReplayAll()
