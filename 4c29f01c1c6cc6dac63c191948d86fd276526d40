@@ -1,0 +1,8 @@
+Verified+2: Jenkins
+Code-Review+2: Liuqing Jing <lawrancejing@gmail.com>
+Workflow+1: Liuqing Jing <lawrancejing@gmail.com>
+Submitted-by: Jenkins
+Submitted-at: Sat, 12 Dec 2015 13:18:36 +0000
+Reviewed-on: https://review.openstack.org/256909
+Project: openstack/evoque-dashboard
+Branch: refs/heads/master
