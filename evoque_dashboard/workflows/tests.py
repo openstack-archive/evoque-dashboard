@@ -23,7 +23,7 @@ from evoque_dashboard.test import helpers as test
 INDEX_URL = reverse('horizon:ticket:workflows:index')
 
 
-class PoliciesTest(test.TestCase):
+class WorkflowsTest(test.TestCase):
 
     @test.create_stubs({api.evoque: ('workflow_list',)})
     def test_index(self):
