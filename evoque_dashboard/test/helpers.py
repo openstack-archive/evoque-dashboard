@@ -21,11 +21,11 @@ def create_stubs(stubs_to_create={}):
     return helpers.create_stubs(stubs_to_create)
 
 
-class SenlinTestsMixin(object):
+class EvoqueTestsMixin(object):
     def _setup_test_data(self):
-        super(SenlinTestsMixin, self)._setup_test_data()
+        super(EvoqueTestsMixin, self)._setup_test_data()
         utils.load_test_data(self)
 
 
-class TestCase(SenlinTestsMixin, helpers.TestCase):
+class TestCase(EvoqueTestsMixin, helpers.TestCase):
     pass
