@@ -16,6 +16,10 @@ from horizon import tables
 from horizon.utils import filters
 
 
+def get_updated_time(object):
+    return filters.parse_isotime(object.updated_time) or None
+
+
 class TicketsTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"))
     created = tables.Column(
@@ -23,16 +27,11 @@ class TicketsTable(tables.DataTable):
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,
-            filters.timesince_or_never
         )
     )
     updated = tables.Column(
-        "updated_at",
+        get_updated_time,
         verbose_name=_("Updated"),
-        filters=(
-            filters.parse_isotime,
-            filters.timesince_or_never
-        )
     )
 
     class Meta(object):
