@@ -14,6 +14,9 @@
 
 from openstack_dashboard.test import helpers
 
+from evoqueclient import client as evoque_client
+
+from evoque_dashboard import api
 from evoque_dashboard.test.test_data import utils
 
 
@@ -29,3 +32,24 @@ class EvoqueTestsMixin(object):
 
 class TestCase(EvoqueTestsMixin, helpers.TestCase):
     pass
+
+
+class APITestCase(EvoqueTestsMixin, helpers.APITestCase):
+    def setUp(self):
+        super(APITestCase, self).setUp()
+
+        # Store the original evoque client
+        self._original_evoqueclient = api.evoque.evoqueclient
+
+        # Replace the clients with our stubs.
+        api.evoque.evoqueclient = lambda request: self.stub_evoqueclient()
+
+    def tearDown(self):
+        super(APITestCase, self).tearDown()
+        api.evoque.evoqueclient = self._original_evoqueclient
+
+    def stub_evoqueclient(self):
+        if not hasattr(self, "evoqueclient"):
+            self.mox.StubOutWithMock(evoque_client, 'Client')
+            self.evoqueclient = self.mox.CreateMock(evoque_client.Client)
+        return self.evoqueclient
