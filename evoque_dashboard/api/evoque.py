@@ -25,6 +25,10 @@ class Workflow(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'created_at', 'updated_at']
 
 
+class Ticket(base.APIResourceWrapper):
+    _attrs = ['id', 'name', 'created_at', 'updated_at']
+
+
 def _get_endpoint(request):
     endpoint = getattr(
         settings, 'EVOQUE_API_URL', "http://127.0.0.1:8808")
@@ -45,3 +49,9 @@ def workflow_list(request):
     """Returns all workflows."""
     workflows = evoqueclient(request).workflows.list()
     return [Workflow(c) for c in workflows]
+
+
+def ticket_list(request):
+    """Returns all tickets."""
+    tickets = evoqueclient(request).tickets.list()
+    return [Ticket(c) for c in tickets]
