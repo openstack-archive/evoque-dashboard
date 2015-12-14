@@ -18,7 +18,7 @@ import horizon
 class Ticket(horizon.Dashboard):
     name = _("Ticket")
     slug = "ticket"
-    panels = ('workflows',)
+    panels = ('workflows', 'tickets')
     default_panel = 'workflows'
 
 

@@ -23,3 +23,10 @@ def data(TEST):
     workflow_1.name = "test-workflow"
 
     TEST.workflows.add(workflow_1)
+
+    # Tickets
+    TEST.tickets = test_data_utils.TestDataContainer()
+    ticket_1 = mock.Mock()
+    ticket_1.name = "test-ticket"
+
+    TEST.tickets.add(ticket_1)
